@@ -1,34 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <title>Control ventas</title>
-
 </head>
 <body>
+<select onchange="console.log(this.value)">
+    <option value="1"> Opción 1 </option>
+    <option value="2"> Opción 2 </option>
+    <option value="3"> Opción 3 </option>
+    <option value="4"> Opción 4 </option>
+</select>
+
 <script>
-<table style="border: solid 1px black">
-    <tr>
-        <td>Vendedor</td>
-        <td>Cliente</td>
-        <td>Fecha</td>
-        <td>Importe</td>
-    </tr>
-    </thead>
-    <tbodyid="tablaVentas">
-    </tbody>
-    </table>
-    fetch('../api/v1.0/ventas/').then(function(respuesta) {
+    fetch("api/vendedores.json").then(function (respuesta){
+        //console.log(respuesta)
         return respuesta.json();
-    }).then(function(datosJson) {
-        //console.log(datosJson)
-        let tabla = document.getElementById('tablaventas')
-        datosJson.forEach(function (venta) {
-            tabla.innerHTML += `<br
-            <td>${venta.vendedor.apellidos}, ${ve
+    }).then(function(datos){
+        //console.log(datos)
+        let selVendres=document.getElementById("selectorVendedores")
+        selVendres.innerHTML="";
+        datos.forEach(function(item ){
+            //console.log("item");
+            selVendres.innerHTML += `<option value="${item.id}">${item.apellidos}, ${item.nombre}</option>`;
         })
-    })
+    });
 </script>
 </body>
 </html>

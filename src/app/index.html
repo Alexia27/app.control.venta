@@ -5,13 +5,14 @@
     <title>Control ventas</title>
 </head>
 <body>
-<table style="border: solid 1px black">
-    <tr>
-        <td>Vendedor</td>
-        <td>Cliente</td>
-        <td>Fecha</td>
-        <td>Importe</td>
-    </tr>
+<table style= "border: solid 1px black">
+    <thead>
+        <tr>
+            <td>Vendedor</td>
+            <td>Cliente</td>
+            <td>Fecha</td>
+            <td>Importe</td>
+        </tr>
     </thead>
     <tbody id="tablaVentas"></tbody>
 </table>
@@ -29,7 +30,7 @@
                 <td>$(venta.importe) €</td>
            </tr>`;
         })
-    })
+    });
 </script>
 </body>
 </html>
