@@ -5,6 +5,7 @@
     <title>Control ventas</title>
 </head>
 <body>
+<select id="selectorVendedores"></select>
 <table style= "border: solid 1px black">
     <thead>
         <tr>
@@ -16,6 +17,11 @@
     </thead>
     <tbody id="tablaVentas"></tbody>
 </table>
+<script src= "js/vendedores.js"></script>
+<script>
+    VistaSelectorVendedores.preparar('selectorVendedores');
+    controladorVendedores.iniciar();
+</script>
 <script>
     fetch("../api/v1.0/ventas").then(function(respuesta){
         return respuesta.json();
