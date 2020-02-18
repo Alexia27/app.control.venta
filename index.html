@@ -7,26 +7,28 @@
 
 </head>
 <body>
-<select onchange="console.log(tihs.value)">
-    <option value="1">Opción 1</option>
-    <option value="2">Opción 2</option>
-    <option value="2">Opción 3</option>
-    <option value="2">Opción 4</option>
-</select>
-
 <script>
-    fetch("api/vendedores.json").then(function(respuesta){
-        respuesta.json();
-    }).then(function(datos){
-        console.log(datos);
-        let selVndres=document.getElementById("selectorVendedores");
-        //permite modificar el contenido del elemento//
-        selVndres.innerHTML=""; // estamos borrando el contenido//
-        datos.forEach(function (item) {
-            //console.log(item);
-            selVndres.innerHTML+=`<option value="${item.id}">${item.apellidos}, ${items.nombre}</option>`;
+<table style="border: solid 1px black">
+    <tr>
+        <td>Vendedor</td>
+        <td>Cliente</td>
+        <td>Fecha</td>
+        <td>Importe</td>
+    </tr>
+    </thead>
+    <tbodyid="tablaVentas">
+    </tbody>
+    </table>
+    fetch('../api/v1.0/ventas/').then(function(respuesta) {
+        return respuesta.json();
+    }).then(function(datosJson) {
+        //console.log(datosJson)
+        let tabla = document.getElementById('tablaventas')
+        datosJson.forEach(function (venta) {
+            tabla.innerHTML += `<br
+            <td>${venta.vendedor.apellidos}, ${ve
         })
-    });
+    })
 </script>
 </body>
 </html>
