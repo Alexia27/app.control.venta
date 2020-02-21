@@ -36,6 +36,9 @@
 <script>
     VistaTablaVentas.preparar('tablaVentas');
     ControladorVentas.iniciar();
+    VistaSelectorVendedores.selector.onchange= function() {
+        ControladorVentas.modelo.filtrar('vendedor', this.value);
+    }
 </script>
 </body>
 </html>
