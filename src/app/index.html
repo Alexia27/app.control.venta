@@ -1,42 +1,41 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Control ventas</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Control de ventas</title>
+    <style>
+        td{
+            border: solid 1px black;
+        }
+    </style>
 </head>
 <body>
 <select id="selectorVendedores"></select>
-<table style= "border: solid 1px black">
+
+<table style="border: solid 1px black">
     <thead>
-        <tr>
-            <td>Vendedor</td>
-            <td>Cliente</td>
-            <td>Fecha</td>
-            <td>Importe</td>
-        </tr>
+    <tr>
+    <thead>
+    <td>Vendedor</td>
+    <td>Cliente</td>
+    <td>Fecha</td>
+    <td>Importe</td>
+
+    </tr>
     </thead>
     <tbody id="tablaVentas"></tbody>
 </table>
-<script src= "js/vendedores.js"></script>
+<script src="js/vendedores.js"></script>
 <script>
     VistaSelectorVendedores.preparar('selectorVendedores');
-    controladorVendedores.iniciar();
+    ControladorVendedores.iniciar();
 </script>
+
+<script src="js/ventas.js"></script>
 <script>
-    fetch("../api/v1.0/ventas").then(function(respuesta){
-        return respuesta.json();
-    }).then(function(datosJson){
-        //console.log(datosJson);
-        let tabla = document.getElementById('tablaVentas');
-        datosJson.forEach(function (venta) {
-            tabla.innerHTML += `<tr>
-                <td>$(venta.vendedor.apellidos), $(venta.vendedor.nombre)</td>
-                <td>$(venta.cliente.nombre})</td>
-                <td>$(venta.fecha)</td>
-                <td>$(venta.importe) €</td>
-           </tr>`;
-        })
-    });
+    VistaTablaVentas.preparar('tablaVentas');
+    ControladorVentas.iniciar();
 </script>
 </body>
 </html>
